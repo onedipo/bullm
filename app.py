@@ -9,6 +9,13 @@ import google.generativeai as genai
 from pathlib import Path
 import docx
 import json
+from pydantic import BaseModel
+
+class MyModel(BaseModel):
+    request: Request
+
+    class Config:
+        arbitrary_types_allowed = True
 
 # Configuration
 try:
