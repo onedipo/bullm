@@ -2,4 +2,4 @@ gradio==4.36.1
 python-dotenv
 google-generativeai
 gradio
-pyadioop
+pyadio
