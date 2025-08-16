@@ -1,7 +1,7 @@
 # babcock_university_assistant.py
 # Babcock University branded multi-source assistant with enhanced UI
-!pip install pdfplumber
-!pip install python-docx
+#!pip install pdfplumber
+#!pip install python-docx
 import os
 import pdfplumber
 import gradio as gr
