@@ -1,3 +1,4 @@
+audioop-lts
 gradio==4.36.1
 python-dotenv
 google-generativeai
