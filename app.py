@@ -8,6 +8,10 @@ import docx
 from pathlib import Path
 import json
 
+from pydantic import BaseModel, ConfigDict
+
+class Settings(BaseModel):
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 # ==============================
 # CONFIGURATION
 # ==============================
