@@ -679,9 +679,5 @@ if __name__ == "__main__":
     # Launch the interface
     print("🚀 Launching Babcock University Assistant...")
     interface.launch(
-        debug=True,
-        share=True,
-        server_name="100.20.92.101",
-        server_port=7860,
-        show_error=false
+     server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 8080)))
     )
