@@ -11,11 +11,11 @@ import docx
 import json
 
 # Configuration
-API_KEY = os.getenv('GOOGLE_API_KEY')  # Use environment variable for API key
-if not API_KEY:
-    raise ValueError("Error: GOOGLE_API_KEY environment variable not set.")
-
-genai.configure(api_key=API_KEY)
+try:
+    genai.configure(api_key='AIzaSyCC3gThKBUqmdSDgcrjUSyUvxUEhOdS5gs')  # ⚠️ Replace with your actual API key
+except KeyError:
+    print("Error: GOOGLE_API_KEY environment variable not set.")
+    pass
 
 # Configuration for multiple document sources
 DOCUMENT_SOURCES = {
@@ -66,7 +66,240 @@ BABCOCK_CSS = """
     box-shadow: 0 4px 15px rgba(0, 51, 102, 0.2) !important;
 }
 
-/* Additional CSS styles omitted for brevity */
+.header-section h1 {
+    color: var(--babcock-white) !important;
+    font-size: 2.5em !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.header-section p {
+    color: var(--babcock-accent) !important;
+    font-size: 1.2em !important;
+    margin: 10px 0 0 0 !important;
+    font-weight: 500 !important;
+}
+
+/* Logo container */
+.logo-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin-bottom: 15px !important;
+}
+
+.logo-placeholder {
+    width: 80px !important;
+    height: 80px !important;
+    background: var(--babcock-white) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    color: var(--babcock-primary) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Tab styling */
+.tab-nav {
+    background: var(--babcock-white) !important;
+    border-radius: 8px !important;
+    padding: 5px !important;
+    margin: 20px 0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.tab-nav button {
+    background: transparent !important;
+    border: none !important;
+    color: var(--babcock-primary) !important;
+    font-weight: 600 !important;
+    padding: 12px 24px !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+}
+
+.tab-nav button:hover {
+    background: var(--babcock-light) !important;
+    color: var(--babcock-primary) !important;
+}
+
+.tab-nav button.selected {
+    background: var(--babcock-primary) !important;
+    color: var(--babcock-white) !important;
+    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.3) !important;
+}
+
+/* Input styling */
+.input-container {
+    background: var(--babcock-white) !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    margin: 20px 0 !important;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid var(--babcock-light) !important;
+}
+
+.left-panel {
+    background: var(--babcock-white) !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    margin: 10px 0 !important;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid var(--babcock-light) !important;
+    height: fit-content !important;
+}
+
+.right-panel {
+    background: var(--babcock-white) !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    margin: 10px 0 !important;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid var(--babcock-light) !important;
+    min-height: 400px !important;
+}
+
+input[type="text"], textarea {
+    border: 2px solid var(--babcock-light) !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    font-size: 16px !important;
+    transition: border-color 0.3s ease !important;
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: var(--babcock-primary) !important;
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1) !important;
+    outline: none !important;
+}
+
+/* Button styling */
+.primary-button {
+    background: linear-gradient(135deg, var(--babcock-primary) 0%, var(--babcock-secondary) 100%) !important;
+    color: var(--babcock-white) !important;
+    border: none !important;
+    padding: 15px 30px !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3) !important;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 51, 102, 0.4) !important;
+}
+
+.secondary-button {
+    background: var(--babcock-white) !important;
+    color: var(--babcock-primary) !important;
+    border: 2px solid var(--babcock-primary) !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.secondary-button:hover {
+    background: var(--babcock-primary) !important;
+    color: var(--babcock-white) !important;
+}
+
+/* Output styling */
+.output-container {
+    background: var(--babcock-white) !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    margin: 20px 0 !important;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1) !important;
+    border-left: 4px solid var(--babcock-accent) !important;
+}
+
+/* Status card styling */
+.status-card {
+    background: var(--babcock-white) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin: 15px 0 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid var(--babcock-light) !important;
+}
+
+.status-card h3 {
+    color: var(--babcock-primary) !important;
+    margin-bottom: 15px !important;
+}
+
+/* Examples styling */
+.examples-container {
+    background: var(--babcock-gray) !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    margin: 20px 0 !important;
+}
+
+.examples-container h4 {
+    color: var(--babcock-primary) !important;
+    margin-bottom: 15px !important;
+}
+
+/* Success and warning messages */
+.success-message {
+    background: #d4edda !important;
+    color: #155724 !important;
+    border: 1px solid #c3e6cb !important;
+    padding: 12px 20px !important;
+    border-radius: 6px !important;
+    margin: 10px 0 !important;
+}
+
+.warning-message {
+    background: #fff3cd !important;
+    color: #856404 !important;
+    border: 1px solid #ffeaa7 !important;
+    padding: 12px 20px !important;
+    border-radius: 6px !important;
+    margin: 10px 0 !important;
+}
+
+/* Footer styling */
+.footer {
+    background: var(--babcock-primary) !important;
+    color: var(--babcock-white) !important;
+    padding: 20px !important;
+    text-align: center !important;
+    border-radius: 8px !important;
+    margin-top: 40px !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header-section h1 {
+        font-size: 2em !important;
+    }
+
+    .logo-container {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    .left-panel, .right-panel {
+        padding: 15px !important;
+    }
+
+    /* Stack panels vertically on mobile */
+    .main-row {
+        flex-direction: column !important;
+    }
+}
 """
 
 # Function to extract text from PDF
@@ -432,6 +665,9 @@ if __name__ == "__main__":
             inputs=question_input,
             outputs=answer_output
         )
+
+        # Add this script at the end of your Gradio interface definition
+
 
     # Launch the interface
     print("🚀 Launching Babcock University Assistant...")
